@@ -45,7 +45,7 @@
                                         "position: new google.maps.LatLng("+coord.getLat()+","+coord.getLon()+"),"+
                                         "title:\""+notes.get(i).getComments()+"\""+
                                         "});marker.setMap(map);";
-                    out.println("markers[i]="+markerTxt);
+                    out.println(markerTxt+"markers["+i+"]=marker;");
                 }
             } catch (Exception ex) {
                 // TODO handle custom exceptions here
