@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Metro/2.2.0-1 (tags/2.2.0u1-7139; 2012-06-02T10:55:19+0000) JAXWS-RI/2.2.6-2 JAXWS/2.2 svn-revision#unknown. --><xs:schema xmlns:tns="http://server.emse.fr/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://server.emse.fr/">
+
+<xs:element name="addItinerary" type="tns:addItinerary"/>
+
+<xs:element name="addItineraryResponse" type="tns:addItineraryResponse"/>
+
+<xs:element name="addNote" type="tns:addNote"/>
+
+<xs:element name="addNoteResponse" type="tns:addNoteResponse"/>
+
+<xs:element name="getNote" type="tns:getNote"/>
+
+<xs:element name="getNoteResponse" type="tns:getNoteResponse"/>
+
+<xs:element name="getNotes" type="tns:getNotes"/>
+
+<xs:element name="getNotesResponse" type="tns:getNotesResponse"/>
+
+<xs:element name="itineraries" type="tns:itineraries"/>
+
+<xs:element name="itinerariesResponse" type="tns:itinerariesResponse"/>
+
+<xs:element name="removeNote" type="tns:removeNote"/>
+
+<xs:element name="removeNoteResponse" type="tns:removeNoteResponse"/>
+
+<xs:element name="updateNote" type="tns:updateNote"/>
+
+<xs:element name="updateNoteResponse" type="tns:updateNoteResponse"/>
+
+<xs:complexType name="getNotes">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getNotesResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:note" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="note">
+<xs:sequence>
+<xs:element name="category" type="xs:string" minOccurs="0"/>
+<xs:element name="comments" type="xs:string" minOccurs="0"/>
+<xs:element name="coordinate" type="tns:sCoordinate" minOccurs="0"/>
+<xs:element name="height" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="sCoordinate">
+<xs:sequence>
+<xs:element name="lat" type="xs:double"/>
+<xs:element name="lon" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addNote">
+<xs:sequence>
+<xs:element name="note" type="tns:note" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addNoteResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="itineraries">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="itinerariesResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:itinerary" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="itinerary">
+<xs:sequence>
+<xs:element name="comments" type="xs:string" minOccurs="0"/>
+<xs:element name="notes" type="tns:note" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addItinerary">
+<xs:sequence>
+<xs:element name="newItinerary" type="tns:itinerary" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addItineraryResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="updateNote">
+<xs:sequence>
+<xs:element name="coordinate" type="tns:sCoordinate" minOccurs="0"/>
+<xs:element name="note" type="tns:note" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateNoteResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getNote">
+<xs:sequence>
+<xs:element name="coordinate" type="tns:sCoordinate" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getNoteResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:note" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="removeNote">
+<xs:sequence>
+<xs:element name="coordinate" type="tns:sCoordinate" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="removeNoteResponse">
+<xs:sequence/>
+</xs:complexType>
+</xs:schema>
