@@ -8,6 +8,10 @@
 
 <xs:element name="addNoteResponse" type="tns:addNoteResponse"/>
 
+<xs:element name="getItinerary" type="tns:getItinerary"/>
+
+<xs:element name="getItineraryResponse" type="tns:getItineraryResponse"/>
+
 <xs:element name="getNote" type="tns:getNote"/>
 
 <xs:element name="getNoteResponse" type="tns:getNoteResponse"/>
@@ -23,6 +27,10 @@
 <xs:element name="removeNote" type="tns:removeNote"/>
 
 <xs:element name="removeNoteResponse" type="tns:removeNoteResponse"/>
+
+<xs:element name="updateItinerary" type="tns:updateItinerary"/>
+
+<xs:element name="updateItineraryResponse" type="tns:updateItineraryResponse"/>
 
 <xs:element name="updateNote" type="tns:updateNote"/>
 
@@ -64,6 +72,45 @@
 <xs:sequence/>
 </xs:complexType>
 
+<xs:complexType name="updateItinerary">
+<xs:sequence>
+<xs:element name="id" type="xs:int"/>
+<xs:element name="itinerary" type="tns:itinerary" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="itinerary">
+<xs:sequence>
+<xs:element name="comments" type="xs:string" minOccurs="0"/>
+<xs:element name="positions">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="entry" minOccurs="0" maxOccurs="unbounded">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="key" minOccurs="0" type="xs:int"/>
+<xs:element name="value" minOccurs="0" type="tns:position"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="title" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="position">
+<xs:sequence>
+<xs:element name="note" type="tns:note" minOccurs="0"/>
+<xs:element name="pos" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateItineraryResponse">
+<xs:sequence/>
+</xs:complexType>
+
 <xs:complexType name="itineraries">
 <xs:sequence/>
 </xs:complexType>
@@ -74,10 +121,15 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="itinerary">
+<xs:complexType name="getItinerary">
 <xs:sequence>
-<xs:element name="comments" type="xs:string" minOccurs="0"/>
-<xs:element name="notes" type="tns:note" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="id" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getItineraryResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:itinerary" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 

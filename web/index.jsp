@@ -20,17 +20,21 @@
         <script type="text/javascript">
           function initialize() {
             var mapOptions = {
-              center: new google.maps.LatLng(-34.397, 150.644),
+              center: new google.maps.LatLng(45.434722, 4.390278),
               zoom: 8,
               mapTypeId: google.maps.MapTypeId.ROADMAP
             };
             var map = new google.maps.Map(document.getElementById("map_canvas"),
                 mapOptions);
 
-            var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
+            var myLatlng = new google.maps.LatLng(45.434722,4.390278);
             
             var markers = new Array();
             <%
+            
+            
+
+            
             try {
                 fr.emse.server.AdminService service = new fr.emse.server.AdminService();
                 fr.emse.server.AdminBean port = service.getAdminBeanPort();
@@ -44,7 +48,7 @@
                     String markerTxt = "var marker = new google.maps.Marker({"+
                                         "position: new google.maps.LatLng("+coord.getLat()+","+coord.getLon()+"),"+
                                         "title:\""+notes.get(i).getComments()+"\""+
-                                        "});marker.setMap(map);";
+                                        "});marker.setMap(map);marker.setTitle(\""+notes.get(i).getComments()+"\");";
                     out.println(markerTxt+"markers["+i+"]=marker;");
                 }
             } catch (Exception ex) {
@@ -59,7 +63,25 @@
         <h1>Bienvenue Maitre!</h1>
 
         <div id="map_canvas" style="width: 900px; height: 500px"></div>
-
+        <select name="itineraries">
+            <%
+            try {
+                fr.emse.server.AdminService service = new fr.emse.server.AdminService();
+                fr.emse.server.AdminBean port = service.getAdminBeanPort();
+                // TODO process result here
+                java.util.List<fr.emse.server.Itinerary> itineraries = port.itineraries();
+                
+                for (fr.emse.server.Itinerary itinerary : itineraries) {
+                    
+                    out.println("<option value=\""+itineraries.indexOf(itinerary) +"\">"+itinerary.getTitle()+"</option>");
+                }
+            } catch (Exception ex) {
+                // TODO handle custom exceptions here
+            }
+            
+            
+            %>
+        </select>
     <hr/>
 
 

@@ -10,17 +10,17 @@
 <message name="removeNoteResponse">
 <part name="parameters" element="tns:removeNoteResponse"/>
 </message>
+<message name="getNote">
+<part name="parameters" element="tns:getNote"/>
+</message>
+<message name="getNoteResponse">
+<part name="parameters" element="tns:getNoteResponse"/>
+</message>
 <message name="updateNote">
 <part name="parameters" element="tns:updateNote"/>
 </message>
 <message name="updateNoteResponse">
 <part name="parameters" element="tns:updateNoteResponse"/>
-</message>
-<message name="itineraries">
-<part name="parameters" element="tns:itineraries"/>
-</message>
-<message name="itinerariesResponse">
-<part name="parameters" element="tns:itinerariesResponse"/>
 </message>
 <message name="addItinerary">
 <part name="parameters" element="tns:addItinerary"/>
@@ -40,24 +40,36 @@
 <message name="getNotesResponse">
 <part name="parameters" element="tns:getNotesResponse"/>
 </message>
-<message name="getNote">
-<part name="parameters" element="tns:getNote"/>
+<message name="itineraries">
+<part name="parameters" element="tns:itineraries"/>
 </message>
-<message name="getNoteResponse">
-<part name="parameters" element="tns:getNoteResponse"/>
+<message name="itinerariesResponse">
+<part name="parameters" element="tns:itinerariesResponse"/>
+</message>
+<message name="getItinerary">
+<part name="parameters" element="tns:getItinerary"/>
+</message>
+<message name="getItineraryResponse">
+<part name="parameters" element="tns:getItineraryResponse"/>
+</message>
+<message name="updateItinerary">
+<part name="parameters" element="tns:updateItinerary"/>
+</message>
+<message name="updateItineraryResponse">
+<part name="parameters" element="tns:updateItineraryResponse"/>
 </message>
 <portType name="AdminBean">
 <operation name="removeNote">
 <input wsam:Action="http://server.emse.fr/AdminBean/removeNoteRequest" message="tns:removeNote"/>
 <output wsam:Action="http://server.emse.fr/AdminBean/removeNoteResponse" message="tns:removeNoteResponse"/>
 </operation>
+<operation name="getNote">
+<input wsam:Action="http://server.emse.fr/AdminBean/getNoteRequest" message="tns:getNote"/>
+<output wsam:Action="http://server.emse.fr/AdminBean/getNoteResponse" message="tns:getNoteResponse"/>
+</operation>
 <operation name="updateNote">
 <input wsam:Action="http://server.emse.fr/AdminBean/updateNoteRequest" message="tns:updateNote"/>
 <output wsam:Action="http://server.emse.fr/AdminBean/updateNoteResponse" message="tns:updateNoteResponse"/>
-</operation>
-<operation name="itineraries">
-<input wsam:Action="http://server.emse.fr/AdminBean/itinerariesRequest" message="tns:itineraries"/>
-<output wsam:Action="http://server.emse.fr/AdminBean/itinerariesResponse" message="tns:itinerariesResponse"/>
 </operation>
 <operation name="addItinerary">
 <input wsam:Action="http://server.emse.fr/AdminBean/addItineraryRequest" message="tns:addItinerary"/>
@@ -71,9 +83,17 @@
 <input wsam:Action="http://server.emse.fr/AdminBean/getNotesRequest" message="tns:getNotes"/>
 <output wsam:Action="http://server.emse.fr/AdminBean/getNotesResponse" message="tns:getNotesResponse"/>
 </operation>
-<operation name="getNote">
-<input wsam:Action="http://server.emse.fr/AdminBean/getNoteRequest" message="tns:getNote"/>
-<output wsam:Action="http://server.emse.fr/AdminBean/getNoteResponse" message="tns:getNoteResponse"/>
+<operation name="itineraries">
+<input wsam:Action="http://server.emse.fr/AdminBean/itinerariesRequest" message="tns:itineraries"/>
+<output wsam:Action="http://server.emse.fr/AdminBean/itinerariesResponse" message="tns:itinerariesResponse"/>
+</operation>
+<operation name="getItinerary">
+<input wsam:Action="http://server.emse.fr/AdminBean/getItineraryRequest" message="tns:getItinerary"/>
+<output wsam:Action="http://server.emse.fr/AdminBean/getItineraryResponse" message="tns:getItineraryResponse"/>
+</operation>
+<operation name="updateItinerary">
+<input wsam:Action="http://server.emse.fr/AdminBean/updateItineraryRequest" message="tns:updateItinerary"/>
+<output wsam:Action="http://server.emse.fr/AdminBean/updateItineraryResponse" message="tns:updateItineraryResponse"/>
 </operation>
 </portType>
 <binding name="AdminBeanPortBinding" type="tns:AdminBean">
@@ -87,7 +107,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="updateNote">
+<operation name="getNote">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -96,7 +116,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="itineraries">
+<operation name="updateNote">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -132,7 +152,25 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="getNote">
+<operation name="itineraries">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="getItinerary">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="updateItinerary">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
